@@ -23,6 +23,7 @@ public:
     void Init(Vector2 spawnPosition);
     void Update(const TiledMap *map);
     void Draw() const;
+    const Vector2 &GetPosition() const;
 
 private:
     Vector2 position;

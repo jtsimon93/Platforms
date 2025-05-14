@@ -5,6 +5,7 @@ extern "C"
 #include <string>
 #include "tiled/TiledMap.h"
 #include "objects/Player.h"
+#include "camera/CameraController.h"
 
 int main()
 {
@@ -21,14 +22,23 @@ int main()
     Player player;
     player.Init(map.GetPlayerSpawn());
 
+    CameraController camera;
+    camera.Init(screenWidth, screenHeight);
+
     while (!WindowShouldClose())
     {
+        camera.Update(player.GetPosition());
+
         BeginDrawing();
         ClearBackground(BLACK);
+
+        camera.Begin();
 
         map.Draw();
         player.Update(&map);
         player.Draw();
+
+        camera.End();
 
         EndDrawing();
     }

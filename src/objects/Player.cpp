@@ -56,3 +56,8 @@ void Player::Draw() const
 
     DrawTextureRec(texture, {0, 0, size.x, size.y}, drawPosition, WHITE);
 }
+
+const Vector2 &Player::GetPosition() const
+{
+    return position;
+}
