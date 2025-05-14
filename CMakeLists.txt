@@ -17,15 +17,16 @@ file(GLOB_RECURSE SOURCES "${CMAKE_CURRENT_SOURCE_DIR}/src/*.cpp")
 
 # Handle sub directories
 add_subdirectory(external/raylib)
+add_subdirectory(external/tinyxml2)
 
 # Create the executable
 add_executable(${PROJECT_NAME} ${SOURCES})
 
 # Link Raylib
-target_link_libraries(${PROJECT_NAME} PRIVATE raylib)
+target_link_libraries(${PROJECT_NAME} PRIVATE raylib tinyxml2)
 
 # Include your headers
-target_include_directories(${PROJECT_NAME} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/include)
+target_include_directories(${PROJECT_NAME} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/include external/tinyxml2)
 
 
 # Copy assets to the output directory
