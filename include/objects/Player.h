@@ -7,16 +7,6 @@ extern "C"
 #include <string>
 #include "tiled/TiledMap.h"
 
-struct Animation
-{
-    int frame = 0;
-    int frameCount = 4;
-    int frameWidth = 32;
-    int frameHeight = 32;
-    float frameTime = 0.1f;
-    float timer = 0.0f;
-};
-
 class Player
 {
 public:
