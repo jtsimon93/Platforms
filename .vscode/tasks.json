@@ -1,0 +1,40 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Build Native",
+      "type": "shell",
+      "command": "cmake --build build",
+      "problemMatcher": ["$gcc"],
+      "group": { "kind": "build", "isDefault": true },
+      "dependsOn": "Configure Native"
+    },
+    {
+      "label": "Configure Native",
+      "type": "shell",
+      "command": "cmake -B build -DCMAKE_BUILD_TYPE=Release"
+    },
+    {
+      "label": "Configure Web",
+      "type": "shell",
+      "command": "emcmake cmake -B build_web -DCMAKE_BUILD_TYPE=Release"
+    },
+    {
+      "label": "Build Web",
+      "type": "shell",
+      "command": "cmake --build build_web",
+      "problemMatcher": ["$gcc"],
+      "dependsOn": "Configure Web"
+    },
+    {
+      "label": "Run Web",
+      "type": "shell",
+      "command": "emrun --no_browser --port 8080 .",
+      "options": {
+        "cwd": "${workspaceFolder}/build_web"
+      },
+      "group": { "kind": "test", "isDefault": true },
+      "dependsOn": "Build Web"
+    }
+  ]
+}
