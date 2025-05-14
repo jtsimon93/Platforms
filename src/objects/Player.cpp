@@ -52,7 +52,7 @@ void Player::Update(const TiledMap *map)
 void Player::Draw() const
 {
     Vector2 drawPosition = position;
-    drawPosition.y -= (size.y);
+    drawPosition.y -= (size.y) - 5; // Adjust for sprite height
 
     DrawTextureRec(texture, {0, 0, size.x, size.y}, drawPosition, WHITE);
 }
