@@ -9,7 +9,7 @@ extern "C"
 class Player
 {
 public:
-    void Init(Vector2 spawnPosition, const std::string &spritePath);
+    void Init(Vector2 spawnPosition);
     void Update();
     void Draw() const;
 

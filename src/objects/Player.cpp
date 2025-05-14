@@ -1,8 +1,9 @@
 #include "objects/Player.h"
 
-void Player::Init(Vector2 spawnPosition, const std::string &spritePath)
+void Player::Init(Vector2 spawnPosition)
 {
     position = spawnPosition;
+    const std::string spritePath = "assets/brackeys_platformer_assets/sprites/knight.png";
     texture = LoadTexture(spritePath.c_str());
 }
 

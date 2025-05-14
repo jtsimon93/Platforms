@@ -19,7 +19,7 @@ int main()
     map.Load("assets/tiled/levels/level1.tmx");
 
     Player player;
-    player.Init(map.GetPlayerSpawn(), "assets/brackeys_platformer_assets/sprites/knight.png");
+    player.Init(map.GetPlayerSpawn());
 
     while (!WindowShouldClose())
     {
