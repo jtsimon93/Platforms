@@ -27,6 +27,7 @@ int main()
         ClearBackground(BLACK);
 
         map.Draw();
+        player.Update(&map);
         player.Draw();
 
         EndDrawing();
