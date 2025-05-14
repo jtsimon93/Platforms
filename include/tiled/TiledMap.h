@@ -32,6 +32,7 @@ public:
     bool Load(const std::string &filePath);
     void Draw() const;
     Vector2 GetPlayerSpawn() const;
+    bool IsTileSolid(Vector2 position) const;
 
 private:
     int tileWidth = 0;
