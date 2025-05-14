@@ -153,3 +153,23 @@ Vector2 TiledMap::GetPlayerSpawn() const
 {
     return playerSpawn;
 }
+
+bool TiledMap::IsTileSolid(Vector2 position) const
+{
+    int tileX = (int)(position.x / tileWidth);
+    int tileY = (int)(position.y / tileHeight);
+
+    for (const auto &layer : layers)
+    {
+        if (layer.name != "platforms")
+            continue;
+
+        int index = tileY * layer.width + tileX;
+        if (index < 0 || index >= layer.data.size())
+            return false;
+
+        return layer.data[index] != 0; // GID 0 means no tile
+    }
+
+    return false;
+}
