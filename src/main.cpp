@@ -27,17 +27,17 @@ int main()
 
     while (!WindowShouldClose())
     {
+        // Input and update logic
+        player.Update(&map);
         camera.Update(player.GetPosition());
 
+        // Drawing logic
         BeginDrawing();
         ClearBackground(BLACK);
 
         camera.Begin();
-
         map.Draw();
-        player.Update(&map);
         player.Draw();
-
         camera.End();
 
         EndDrawing();
