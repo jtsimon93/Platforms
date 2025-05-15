@@ -30,7 +30,7 @@ class Player
 public:
     ~Player();
     void Init(Vector2 spawnPosition);
-    void Update(const TiledMap *map);
+    void Update(const TiledMap *map, float deltaTime);
     void Draw() const;
     const Vector2 &GetPosition() const;
 

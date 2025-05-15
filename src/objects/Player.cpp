@@ -70,15 +70,14 @@ void Player::GroundCheck(const TiledMap *map)
     }
 }
 
-void Player::Update(const TiledMap *map)
+void Player::Update(const TiledMap *map, float deltaTime)
 {
     CollisionCheck(map);
     HandleInput();
 
-    const float dt = GetFrameTime();
-    position.x += velocity.x * dt;
-    position.y += velocity.y * dt;
-    velocity.y += gravity * dt;
+    position.x += velocity.x * deltaTime;
+    position.y += velocity.y * deltaTime;
+    velocity.y += gravity * deltaTime;
 
     if (!onGround)
     {

@@ -28,7 +28,7 @@ int main()
     while (!WindowShouldClose())
     {
         // Input and update logic
-        player.Update(&map);
+        player.Update(&map, GetFrameTime());
         camera.Update(player.GetPosition());
 
         // Drawing logic
