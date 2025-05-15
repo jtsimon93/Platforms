@@ -45,5 +45,5 @@ private:
     std::vector<TileLayer> layers;
 
     const Tileset *GetTilesetForGID(int gid) const;
-    Rectangle GetSourceRectForGID(int gid, const Tileset &tileset) const;
+    static Rectangle GetSourceRectForGID(int gid, const Tileset &tileset) ;
 };
