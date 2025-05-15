@@ -10,6 +10,13 @@ void Player::Init(const Vector2 spawnPosition)
 
 void Player::HandleInput()
 {
+    if (onGround && (IsKeyPressed(KEY_SPACE) || IsKeyPressed(KEY_W) || IsKeyPressed(KEY_UP)))
+    {
+        onGround = false;
+        velocity.y = jumpVelocity;
+        state = PlayerState::JUMPING;
+    }
+
     if (IsKeyDown(KEY_LEFT) || IsKeyDown(KEY_A))
     {
         velocity.x = -moveSpeed;
@@ -26,12 +33,6 @@ void Player::HandleInput()
     {
         velocity.x = 0;
         state = PlayerState::IDLE;
-    }
-
-    if (onGround && (IsKeyDown(KEY_SPACE) || IsKeyDown(KEY_W) || IsKeyDown(KEY_UP)))
-    {
-        velocity.y = jumpVelocity;
-        state = PlayerState::JUMPING;
     }
 }
 
