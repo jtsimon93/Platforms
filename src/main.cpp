@@ -2,47 +2,12 @@ extern "C"
 {
 #include "raylib.h"
 }
-#include <string>
-#include "tiled/TiledMap.h"
-#include "objects/Player.h"
-#include "camera/CameraController.h"
+#include "core/GameManager.h"
 
 int main()
 {
-    constexpr int screenWidth = 800;
-    constexpr int screenHeight = 600;
-    const std::string gameTitle = "Platforms";
-
-    InitWindow(screenWidth, screenHeight, gameTitle.c_str());
-    SetTargetFPS(60);
-
-    TiledMap map;
-    map.Load("assets/tiled/levels/level1.tmx");
-
-    Player player;
-    player.Init(map.GetPlayerSpawn());
-
-    CameraController camera;
-    camera.Init(screenWidth, screenHeight);
-
-    while (!WindowShouldClose())
-    {
-        // Input and update logic
-        player.Update(&map, GetFrameTime());
-        camera.Update(player.GetPosition());
-
-        // Drawing logic
-        BeginDrawing();
-        ClearBackground(BLACK);
-
-        camera.Begin();
-        map.Draw();
-        player.Draw();
-        camera.End();
-
-        EndDrawing();
-    }
-
-    CloseWindow();
+    GameManager game;
+    game.Init(800, 600, "Platforms");
+    game.Run();
     return 0;
 }
