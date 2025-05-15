@@ -37,14 +37,19 @@ void Player::HandleInput()
     }
 }
 
-void Player::GroundCheck(const TiledMap *map) {
+void Player::CollisionCheck(const TiledMap *map)
+{
+    GroundCheck(map);
+}
+
+void Player::GroundCheck(const TiledMap *map)
+{
     const Vector2 probe = {
         position.x + size.x / 2.0f,
-        position.y + 1.0f
-    };
+        position.y + 1.0f};
 
     // Use below to debug ground check
-    //DrawCircle(static_cast<int>(probe.x), static_cast<int>(probe.y), 2.0f, RED);
+    // DrawCircle(static_cast<int>(probe.x), static_cast<int>(probe.y), 2.0f, RED);
 
     if (map->IsTileSolid(probe))
     {
@@ -54,14 +59,15 @@ void Player::GroundCheck(const TiledMap *map) {
         // snap to ground
         position.y = std::floor((position.y + size.y) / 16.0f) * 16.0f - size.y;
     }
-    else {
+    else
+    {
         onGround = false;
     }
 }
 
 void Player::Update(const TiledMap *map)
 {
-    GroundCheck(map);
+    CollisionCheck(map);
     HandleInput();
 
     const float dt = GetFrameTime();
@@ -69,8 +75,8 @@ void Player::Update(const TiledMap *map)
     position.y += velocity.y * dt;
     velocity.y += gravity * dt;
 
-
-    if (!onGround) {
+    if (!onGround)
+    {
         // For now let's use jumping but might need something for falling later
         state = PlayerState::JUMPING;
     }

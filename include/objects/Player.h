@@ -36,6 +36,7 @@ public:
 private:
     void HandleInput();
     void GroundCheck(const TiledMap *map);
+    void CollisionCheck(const TiledMap *map);
     Vector2 position;
     Texture2D texture;
     Vector2 size = {32, 32};
