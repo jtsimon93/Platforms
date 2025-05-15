@@ -32,7 +32,7 @@ void GameManager::Init(int width, int height, const std::string &title)
     player->Init(currentMap->GetPlayerSpawn());
 
     camera = new CameraController();
-    camera->Init(screenWidth, screenHeight);
+    camera->Init(static_cast<float>(screenWidth), static_cast<float>(screenHeight));
 
     isRunning = true;
 };
