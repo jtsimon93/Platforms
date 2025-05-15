@@ -5,7 +5,7 @@
 
 TiledMap::~TiledMap()
 {
-    for (auto &ts : tilesets)
+    for (const auto &ts : tilesets)
     {
         UnloadTexture(ts.texture);
     }
