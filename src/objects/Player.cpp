@@ -1,5 +1,6 @@
 #include "objects/Player.h"
 #include <cmath>
+#include <iostream>
 
 void Player::Init(const Vector2 spawnPosition)
 {
@@ -67,6 +68,12 @@ void Player::Update(const TiledMap *map)
     position.x += velocity.x * dt;
     position.y += velocity.y * dt;
     velocity.y += gravity * dt;
+
+
+    if (!onGround) {
+        // For now let's use jumping but might need something for falling later
+        state = PlayerState::JUMPING;
+    }
 }
 
 void Player::Draw() const
