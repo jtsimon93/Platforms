@@ -9,6 +9,7 @@
   "cmake.generator": "Ninja",
   "cmake.configureOnOpen": true,
   "files.associations": {
-    "cmath": "cpp"
+    "cmath": "cpp",
+    "format": "cpp"
   }
 }
