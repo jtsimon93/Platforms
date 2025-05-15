@@ -2,6 +2,11 @@
 #include <cmath>
 #include <iostream>
 
+Player::~Player()
+{
+    UnloadTexture(texture);
+}
+
 void Player::Init(const Vector2 spawnPosition)
 {
     position = spawnPosition;

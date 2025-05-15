@@ -28,6 +28,7 @@ enum class PlayerDirection
 class Player
 {
 public:
+    ~Player();
     void Init(Vector2 spawnPosition);
     void Update(const TiledMap *map);
     void Draw() const;
