@@ -40,6 +40,7 @@ private:
     void Update(float deltaTime);
     void Draw();
     void LoadLevel(const std::string &levelPath);
+    void CheckCoinCollisions();
 
     int screenWidth;
     int screenHeight;

@@ -46,3 +46,8 @@ const int Coin::GetValue() const
 {
     return value;
 }
+
+const Rectangle Coin::GetCollisionRect() const
+{
+    return Rectangle{position.x, position.y, size.x, size.y};
+}

@@ -26,10 +26,12 @@ void GameManager::Init(int width, int height, const std::string &title)
     SetTargetFPS(60);
 
     currentMap = new TiledMap();
-
     player = new Player();
 
     SetLevel(1);
+
+    score = 0;
+    lives = 3;
 
     camera = new CameraController();
     camera->Init(static_cast<float>(screenWidth), static_cast<float>(screenHeight));
@@ -79,6 +81,8 @@ void GameManager::Update(float deltaTime)
 
     player->Update(currentMap, deltaTime);
     camera->Update(player->GetPosition());
+
+    CheckCoinCollisions();
 
     for (auto &coin : coins)
     {
@@ -189,4 +193,25 @@ void GameManager::SetLevel(int level)
     this->level = level;
     std::string levelPath = "assets/tiled/levels/level" + std::to_string(level) + ".tmx";
     LoadLevel(levelPath);
+}
+
+void GameManager::CheckCoinCollisions()
+{
+    const Rectangle playerRect = player->GetCollisionRect();
+
+    auto coinIt = coins.begin();
+    while (coinIt != coins.end())
+    {
+        const Rectangle coinRect = (*coinIt)->GetCollisionRect();
+
+        if (CheckCollisionRecs(playerRect, coinRect))
+        {
+            AddScore((*coinIt)->GetValue());
+            coinIt = coins.erase(coinIt);
+        }
+        else
+        {
+            ++coinIt;
+        }
+    }
 }

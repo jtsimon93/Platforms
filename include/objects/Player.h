@@ -1,6 +1,7 @@
 #pragma once
 
-extern "C" {
+extern "C"
+{
 #include "raylib.h"
 }
 
@@ -8,7 +9,8 @@ extern "C" {
 #include "tiled/TiledMap.h"
 #include "objects/Sprite.h"
 
-enum class PlayerState {
+enum class PlayerState
+{
     IDLE,
     RUNNING,
     ROLLING,
@@ -17,14 +19,16 @@ enum class PlayerState {
     DEATH
 };
 
-enum class PlayerDirection {
+enum class PlayerDirection
+{
     LEFT,
     RIGHT,
     UP,
     DOWN
 };
 
-class Player {
+class Player
+{
 public:
     ~Player() = default;
 
@@ -35,6 +39,8 @@ public:
     void Draw() const;
 
     const Vector2 &GetPosition() const;
+
+    const Rectangle GetCollisionRect() const;
 
 private:
     void HandleInput();

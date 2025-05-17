@@ -156,3 +156,12 @@ const Vector2 &Player::GetPosition() const
 {
     return position;
 }
+
+const Rectangle Player::GetCollisionRect() const
+{
+    return Rectangle{
+        position.x,
+        position.y,
+        32.0f,
+        32.0f};
+}

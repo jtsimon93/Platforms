@@ -25,9 +25,11 @@ public:
     void Draw() const;
     const Vector2 &GetPosition() const;
     const int GetValue() const;
+    const Rectangle GetCollisionRect() const;
 
 private:
     Vector2 position = {0, 0};
     Sprite sprite;
     const int value = 1;
+    const Vector2 size = {16, 16};
 };
