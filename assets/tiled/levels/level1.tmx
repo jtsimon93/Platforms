@@ -137,13 +137,13 @@
   <object id="3" name="Coin" x="296" y="190">
    <point/>
   </object>
-  <object id="4" name="Coin" x="442.25" y="175.5">
+  <object id="4" name="Coin" x="442.75" y="191.5">
    <point/>
   </object>
   <object id="5" name="Coin" x="776" y="120">
    <point/>
   </object>
-  <object id="6" name="Coin" x="896" y="124">
+  <object id="6" name="Coin" x="896.5" y="143.5">
    <point/>
   </object>
  </objectgroup>
