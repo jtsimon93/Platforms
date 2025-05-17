@@ -26,10 +26,10 @@ void GameManager::Init(int width, int height, const std::string &title)
     SetTargetFPS(60);
 
     currentMap = new TiledMap();
-    currentMap->Load("assets/tiled/levels/level1.tmx");
 
     player = new Player();
-    player->Init(currentMap->GetPlayerSpawn());
+
+    SetLevel(1);
 
     camera = new CameraController();
     camera->Init(static_cast<float>(screenWidth), static_cast<float>(screenHeight));
@@ -148,4 +148,45 @@ void GameManager::LoadLevel(const std::string &levelPath)
     currentMap->Load(levelPath);
 
     player->Init(currentMap->GetPlayerSpawn());
+}
+
+void GameManager::AddScore(int points)
+{
+    score += points;
+}
+
+int GameManager::GetScore() const
+{
+    return score;
+}
+
+void GameManager::AddLives(int lives)
+{
+    this->lives += lives;
+}
+
+int GameManager::GetLives() const
+{
+    return lives;
+}
+
+void GameManager::RemoveLives(int lives)
+{
+    this->lives -= lives;
+    if (this->lives <= 0)
+    {
+        currentState = GameState::GAME_OVER;
+    }
+}
+
+int GameManager::GetLevel() const
+{
+    return level;
+}
+
+void GameManager::SetLevel(int level)
+{
+    this->level = level;
+    std::string levelPath = "assets/tiled/levels/level" + std::to_string(level) + ".tmx";
+    LoadLevel(levelPath);
 }

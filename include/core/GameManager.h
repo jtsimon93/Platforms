@@ -27,6 +27,13 @@ public:
     void Init(int screenWidth, int screenHeight, const std::string &gameTitle);
     void Run();
     void Shutdown();
+    void AddScore(int points);
+    int GetScore() const;
+    void AddLives(int lives);
+    void RemoveLives(int lives);
+    int GetLives() const;
+    void SetLevel(int level);
+    int GetLevel() const;
 
 private:
     void HandleInput();
@@ -38,6 +45,9 @@ private:
     int screenHeight;
     std::string gameTitle;
     GameState currentState;
+    int score = 0;
+    int lives = 3;
+    int level = 1;
 
     TiledMap *currentMap;
     Player *player;
