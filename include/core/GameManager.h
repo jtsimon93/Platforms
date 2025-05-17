@@ -1,14 +1,14 @@
-#pragma once
-
 extern "C"
 {
 #include "raylib.h"
 }
 
 #include <string>
+#include <memory>
 #include "tiled/TiledMap.h"
 #include "camera/CameraController.h"
 #include "objects/Player.h"
+#include "objects/Coin.h"
 
 enum class GameState
 {
@@ -42,6 +42,7 @@ private:
     TiledMap *currentMap;
     Player *player;
     CameraController *camera;
+    std::vector<std::unique_ptr<Coin>> coins;
 
     bool isRunning;
 };

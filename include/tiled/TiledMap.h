@@ -32,6 +32,7 @@ public:
     bool Load(const std::string &filePath);
     void Draw() const;
     Vector2 GetPlayerSpawn() const;
+    std::vector<Vector2> GetCoinSpawnPoints() const;
     bool IsTileSolid(Vector2 position) const;
 
 private:
@@ -41,9 +42,10 @@ private:
     int mapHeight = 0;
 
     Vector2 playerSpawn = {0, 0};
+    std::vector<Vector2> coinSpawnPoints;
     std::vector<Tileset> tilesets;
     std::vector<TileLayer> layers;
 
     const Tileset *GetTilesetForGID(int gid) const;
-    static Rectangle GetSourceRectForGID(int gid, const Tileset &tileset) ;
+    static Rectangle GetSourceRectForGID(int gid, const Tileset &tileset);
 };

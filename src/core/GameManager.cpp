@@ -34,6 +34,13 @@ void GameManager::Init(int width, int height, const std::string &title)
     camera = new CameraController();
     camera->Init(static_cast<float>(screenWidth), static_cast<float>(screenHeight));
 
+    for (const auto &coinSpawn : currentMap->GetCoinSpawnPoints())
+    {
+        auto coin = std::make_unique<Coin>();
+        coin->Init(coinSpawn);
+        coins.push_back(std::move(coin));
+    }
+
     isRunning = true;
 };
 
@@ -72,6 +79,11 @@ void GameManager::Update(float deltaTime)
 
     player->Update(currentMap, deltaTime);
     camera->Update(player->GetPosition());
+
+    for (auto &coin : coins)
+    {
+        coin->Update(deltaTime);
+    }
 };
 
 void GameManager::Draw()
@@ -84,6 +96,12 @@ void GameManager::Draw()
         camera->Begin();
         currentMap->Draw();
         player->Draw();
+
+        for (const auto &coin : coins)
+        {
+            coin->Draw();
+        }
+
         camera->End();
 
         if (currentState == GameState::PAUSED)

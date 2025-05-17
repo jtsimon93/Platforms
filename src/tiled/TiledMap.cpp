@@ -85,16 +85,24 @@ bool TiledMap::Load(const std::string &filePath)
     }
 
     // Handle object groups
-    // Note: Right now this only handles the PLAYER spawn point
     for (tinyxml2::XMLElement *objectGroup = map->FirstChildElement("objectgroup"); objectGroup; objectGroup = objectGroup->NextSiblingElement("objectgroup"))
     {
         for (tinyxml2::XMLElement *obj = objectGroup->FirstChildElement("object"); obj; obj = obj->NextSiblingElement("object"))
         {
+            // Player spanw point
             if (const char *name = obj->Attribute("name"); name && std::string(name) == "Player")
             {
-                float x = obj->FloatAttribute("x");
-                float y = obj->FloatAttribute("y");
+                const float x = obj->FloatAttribute("x");
+                const float y = obj->FloatAttribute("y");
                 playerSpawn = {x, y};
+            }
+
+            // Coin spawn points
+            if (const char *name = obj->Attribute("name"); name && std::string(name) == "Coin")
+            {
+                const float x = obj->FloatAttribute("x");
+                const float y = obj->FloatAttribute("y");
+                coinSpawnPoints.push_back({x, y});
             }
         }
     }
@@ -153,6 +161,11 @@ Vector2 TiledMap::GetPlayerSpawn() const
     return playerSpawn;
 }
 
+std::vector<Vector2> TiledMap::GetCoinSpawnPoints() const
+{
+    return coinSpawnPoints;
+}
+
 bool TiledMap::IsTileSolid(const Vector2 position) const
 {
     const int tileX = static_cast<int>(position.x / tileWidth);
@@ -162,7 +175,7 @@ bool TiledMap::IsTileSolid(const Vector2 position) const
         return false; // Out of bounds
 
     // Use below to debug tile collision
-    //DrawRectangle(tileX * tileWidth, tileY * tileHeight, tileWidth, tileHeight, Fade(RED, 0.5f));
+    // DrawRectangle(tileX * tileWidth, tileY * tileHeight, tileWidth, tileHeight, Fade(RED, 0.5f));
 
     for (const auto &layer : layers)
     {
@@ -180,4 +193,3 @@ bool TiledMap::IsTileSolid(const Vector2 position) const
 
     return false; // No solid tile found
 }
-
