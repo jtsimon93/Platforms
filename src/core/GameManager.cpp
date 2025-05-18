@@ -26,6 +26,8 @@ void GameManager::Init(int width, int height, const std::string &title) {
   score = 0;
   lives = 3;
 
+  hud.Init(score, lives);
+
   camera = new CameraController();
   camera->Init(static_cast<float>(screenWidth),
                static_cast<float>(screenHeight));
@@ -71,6 +73,8 @@ void GameManager::Update(float deltaTime) {
   for (auto &coin : coins) {
     coin->Update(deltaTime);
   }
+
+  hud.Update(score, lives);
 };
 
 void GameManager::Draw() {
@@ -86,7 +90,9 @@ void GameManager::Draw() {
       coin->Draw();
     }
 
+
     camera->End();
+    hud.Draw();
 
     if (currentState == GameState::PAUSED) {
       DrawRectangle(0, 0, screenWidth, screenHeight, ColorAlpha(BLACK, 0.5f));

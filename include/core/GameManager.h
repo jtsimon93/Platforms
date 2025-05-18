@@ -4,6 +4,7 @@
 #include "camera/CameraController.h"
 #include "objects/Player.h"
 #include "objects/Coin.h"
+#include "objects/Hud.h"
 
 enum class GameState
 {
@@ -49,6 +50,7 @@ private:
     Player *player;
     CameraController *camera;
     std::vector<std::unique_ptr<Coin>> coins;
+    Hud hud;
 
     bool isRunning;
 };
