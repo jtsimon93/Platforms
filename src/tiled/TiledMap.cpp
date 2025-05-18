@@ -2,6 +2,7 @@
 #include <iostream>
 #include <sstream>
 #include <filesystem>
+#include "tinyxml2.h"
 
 TiledMap::~TiledMap()
 {
