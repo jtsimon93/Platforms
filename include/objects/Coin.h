@@ -5,8 +5,6 @@ extern "C"
 #include "raylib.h"
 }
 
-#include <string>
-#include "tiled/TiledMap.h"
 #include "objects/Sprite.h"
 
 enum class CoinState
