@@ -1,10 +1,7 @@
 {
-  "C_Cpp.default.compileCommands": "${workspaceFolder}/build/compile_commands.json",
-  "C_Cpp.intelliSenseEngine": "default",
   "cmake.buildDirectory": "${workspaceFolder}/build",
   "cmake.exportCompileCommandsFile": true,
   "editor.formatOnSave": true,
-
   "cmake.sourceDirectory": "${workspaceFolder}",
   "cmake.generator": "Ninja",
   "cmake.configureOnOpen": true,
