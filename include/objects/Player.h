@@ -6,7 +6,6 @@ extern "C" {
 
 #include "objects/Sprite.h"
 #include "tiled/TiledMap.h"
-#include <string>
 
 enum class PlayerState { IDLE, RUNNING, ROLLING, JUMPING, HIT, DEATH };
 
