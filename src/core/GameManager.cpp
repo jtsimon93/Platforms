@@ -65,6 +65,7 @@ void GameManager::Update(float deltaTime) {
     return;
   }
 
+  CheckIfPlayerFellOffPlatforms();
   player->Update(currentMap, deltaTime);
   camera->Update(player->GetPosition());
 
@@ -89,7 +90,6 @@ void GameManager::Draw() {
     for (const auto &coin : coins) {
       coin->Draw();
     }
-
 
     camera->End();
     hud.Draw();
@@ -171,5 +171,16 @@ void GameManager::CheckCoinCollisions() {
     } else {
       ++coinIt;
     }
+  }
+}
+
+void GameManager::CheckIfPlayerFellOffPlatforms() {
+  auto playerPosition = player->GetPosition();
+
+  if (playerPosition.y >= 300) {
+    lives--;
+    auto playerStartPosition = currentMap->GetPlayerSpawn();
+    player->UpdatePlayerPosition(playerStartPosition);
+    player->SnapPlayerToGround();
   }
 }

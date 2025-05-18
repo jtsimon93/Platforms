@@ -14,24 +14,18 @@ enum class PlayerDirection { LEFT, RIGHT, UP, DOWN };
 class Player {
 public:
   ~Player() = default;
-
   void Init(Vector2 spawnPosition);
-
   void Update(const TiledMap *map, float deltaTime);
-
   void Draw() const;
-
   const Vector2 &GetPosition() const;
-
   const Rectangle GetCollisionRect() const;
+  void UpdatePlayerPosition(const Vector2 newPosition);
+  void SnapPlayerToGround();
 
 private:
   void HandleInput();
-
   void GroundCheck(const TiledMap *map);
-
   void CollisionCheck(const TiledMap *map);
-
   void UpdateAnimation();
 
   Vector2 position = {0, 0};
