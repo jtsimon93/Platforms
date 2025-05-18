@@ -35,6 +35,6 @@ cmake --build .
 
 # Run the game
 echo -e "${GREEN}Starting game...${NC}"
-prime-run ./Platforms
+./Platforms
 
 echo -e "${YELLOW}Game exited.${NC}"
