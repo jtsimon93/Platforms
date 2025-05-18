@@ -12,7 +12,7 @@
     {
       "label": "Configure Native",
       "type": "shell",
-      "command": "cmake -B build -DCMAKE_BUILD_TYPE=Release"
+      "command": "cmake -B build -G Ninja -DCMAKE_BUILD_TYPE=Release"
     },
     {
       "label": "Configure Web",
