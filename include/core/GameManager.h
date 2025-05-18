@@ -1,8 +1,3 @@
-extern "C"
-{
-#include "raylib.h"
-}
-
 #include <string>
 #include <memory>
 #include "tiled/TiledMap.h"
